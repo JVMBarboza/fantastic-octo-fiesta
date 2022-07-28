@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
 #define MAX_SORTEIO 30
 #define MAX_MARCACAO 15
 
@@ -43,12 +44,13 @@ int busca(int valor, int *cartela_sorteada, int tamanho_cartela_sorteada){
 
 void avaliar_marcacao(int *sorteio, int tam_sorteio, int *cartela, char* marcacao, int tam_marcacao) {
 	
-	int i=0, variavel_auxiliar;
+	int i=0;
 	
 	do{
-		variavel_auxiliar = busca(cartela[i], sorteio, tam_sorteio);
-		if( variavel_auxiliar )
-			
+		if( busca(cartela[i], sorteio, tam_sorteio) )
+			strcpy(&marcacao[i],"X");
+		else
+			strcpy(&marcacao[i],"O");
 		i++;
 	}while( i<tam_marcacao );
 }
@@ -72,5 +74,3 @@ int main(int argc, char **argv) {
 	
 	return 0;
 }
-
-
